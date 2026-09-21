@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rupa's Bay - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-utensils"></i> Rupa's Bay</h2>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-page="menu">
+                <i class="fas fa-utensils"></i>
+                <span>Menu Management</span>
+            </a>
+            <a href="#" class="nav-item" data-page="reservations">
+                <i class="fas fa-calendar"></i>
+                <span>Reservations</span>
+            </a>
+            <a href="#" class="nav-item" data-page="reviews">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="#" class="nav-item" data-page="events">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Events</span>
+            </a>
+            <a href="#" class="nav-item" data-page="gallery">
+                <i class="fas fa-image"></i>
+                <span>Gallery</span>
+            </a>
+            <a href="#" class="nav-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="btn btn-secondary" id="darkModeToggle">
+                <i class="fas fa-moon"></i> Dark Mode
+            </button>
+            <button class="btn btn-danger" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 id="pageTitle">Dashboard</h1>
+            <div class="header-actions">
+                <div class="notification">
+                    🔔
+                    <span id="reservation-count">0</span>
+                </div>
+                <div class="admin-profile">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23d4a574'/%3E%3Ccircle cx='50' cy='35' r='20' fill='%23fff'/%3E%3Cellipse cx='50' cy='70' rx='25' ry='20' fill='%23fff'/%3E%3C/svg%3E"
+                        alt="Admin">
+                    <span>Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Dashboard Page -->
+            <div class="page" id="dashboard-page" style="display: block;">
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-card skeleton"></div>
+                    <div class="stat-card skeleton"></div>
+                    <div class="stat-card skeleton"></div>
+                    <div class="stat-card skeleton"></div>
+                    <div class="stat-card skeleton"></div>
+                    <div class="stat-card skeleton"></div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Reservations by Status</h3>
+                        <canvas id="reservationsChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Review Ratings Distribution</h3>
+                        <canvas id="ratingsChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Menu Categories</h3>
+                        <canvas id="categoriesChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Recent Activity</h3>
+                        <div id="recentActivity" class="activity-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Management Page -->
+            <div class="page" id="menu-page">
+                <div class="page-header">
+                    <h2>Menu Management</h2>
+                    <button class="btn btn-primary" id="addMenuBtn">
+                        <i class="fas fa-plus"></i> Add Menu Item
+                    </button>
+                </div>
+
+                <div class="filters">
+                    <input type="text" id="menuSearch" placeholder="Search menu items..." class="search-input">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table" id="menuTable">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Chef Pick</th>
+                                <th>Available</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="menuTableBody">
+                            <tr class="skeleton-row">
+                                <td colspan="7"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination" id="menuPagination"></div>
+            </div>
+
+            <!-- Reservations Page -->
+            <div class="page" id="reservations-page">
+                <div class="page-header">
+                    <h2>Reservations</h2>
+                </div>
+
+                <div class="filters">
+                    <input type="text" id="reservationSearch" placeholder="Search by name or email..."
+                        class="search-input">
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">All Statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table" id="reservationsTable">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Guests</th>
+                                <th>Date & Time</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservationsTableBody">
+                            <tr class="skeleton-row">
+                                <td colspan="7"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Reviews Page -->
+            <div class="page" id="reviews-page">
+                <div class="page-header">
+                    <h2>Reviews</h2>
+                </div>
+
+                <div class="filters">
+                    <input type="text" id="reviewSearch" placeholder="Search reviews..." class="search-input">
+                </div>
+
+                <div class="reviews-grid" id="reviewsGrid">
+                    <div class="review-card skeleton"></div>
+                    <div class="review-card skeleton"></div>
+                    <div class="review-card skeleton"></div>
+                </div>
+            </div>
+
+            <!-- Events Page -->
+            <div class="page" id="events-page">
+                <div class="page-header">
+                    <h2>Events</h2>
+                    <button class="btn btn-primary" id="addEventBtn">
+                        <i class="fas fa-plus"></i> Create Event
+                    </button>
+                </div>
+
+                <div class="events-grid" id="eventsGrid">
+                    <div class="event-card skeleton"></div>
+                    <div class="event-card skeleton"></div>
+                    <div class="event-card skeleton"></div>
+                </div>
+            </div>
+
+            <!-- Gallery Page -->
+            <div class="page" id="gallery-page">
+                <div class="page-header">
+                    <h2>Gallery</h2>
+                    <button class="btn btn-primary" id="uploadImageBtn">
+                        <i class="fas fa-upload"></i> Upload Images
+                    </button>
+                </div>
+
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Drag images here or click to upload</h3>
+                        <p>Supported formats: JPG, PNG, GIF</p>
+                    </div>
+                    <input type="file" id="galleryFileInput" multiple accept="image/*" style="display: none;">
+                </div>
+
+                <div class="gallery-grid" id="galleryGrid">
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div class="page" id="settings-page">
+                <div class="page-header">
+                    <h2>Settings</h2>
+                </div>
+
+                <div class="settings-container">
+                    <div class="settings-card">
+                        <h3>Restaurant Information</h3>
+                        <form id="settingsForm" class="settings-form">
+                            <div class="form-group">
+                                <label for="restaurantName">Restaurant Name</label>
+                                <input type="text" id="restaurantName" name="restaurantName">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <textarea id="address" name="address" rows="2"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="openingHours">Opening Hours</label>
+                                <input type="text" id="openingHours" name="openingHours"
+                                    placeholder="e.g., 9 AM - 11 PM">
+                            </div>
+
+                            <h4>Social Media Links</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="instagram"><i class="fab fa-instagram"></i> Instagram</label>
+                                    <input type="url" id="instagram" name="instagram">
+                                </div>
+                                <div class="form-group">
+                                    <label for="facebook"><i class="fab fa-facebook"></i> Facebook</label>
+                                    <input type="url" id="facebook" name="facebook">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="tripadvisor"><i class="fas fa-globe"></i> TripAdvisor</label>
+                                    <input type="url" id="tripadvisor" name="tripadvisor">
+                                </div>
+                                <div class="form-group">
+                                    <label for="googlemaps"><i class="fab fa-google"></i> Google Maps</label>
+                                    <input type="url" id="googlemaps" name="googlemaps">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Settings
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="confirmTitle">Confirm Action</h3>
+                <button class="close-btn" onclick="closeModal('confirmModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('confirmModal')">Cancel</button>
+                <button class="btn btn-danger" id="confirmBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Item Modal -->
+    <div class="modal" id="menuModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="menuModalTitle">Add Menu Item</h3>
+                <button class="close-btn" onclick="closeModal('menuModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="menuForm" class="modal-form">
+                <div class="form-group">
+                    <label for="menuName">Name *</label>
+                    <input type="text" id="menuName" required>
+                </div>
+                <div class="form-group">
+                    <label for="menuDescription">Description</label>
+                    <textarea id="menuDescription" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="menuPrice">Price *</label>
+                        <input type="number" id="menuPrice" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="menuCategory">Category *</label>
+                        <input type="text" id="menuCategory" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="menuChefPick">
+                            <input type="checkbox" id="menuChefPick">
+                            Chef Pick
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="menuAvailable">
+                            <input type="checkbox" id="menuAvailable" checked>
+                            Available
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="menuImage">Upload Image</label>
+                    <input type="file" id="menuImage" accept="image/*">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('menuModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="eventModalTitle">Create Event</h3>
+                <button class="close-btn" onclick="closeModal('eventModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="eventForm" class="modal-form">
+                <div class="form-group">
+                    <label for="eventTitle">Title *</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Description</label>
+                    <textarea id="eventDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">Date *</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventImage">Upload Image</label>
+                    <input type="file" id="eventImage" accept="image/*">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('eventModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reservation Status Modal -->
+    <div class="modal" id="statusModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Reservation Status</h3>
+                <button class="close-btn" onclick="closeModal('statusModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="newStatus">New Status</label>
+                    <select id="newStatus" class="filter-select">
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('statusModal')">Cancel</button>
+                <button class="btn btn-primary" id="updateStatusBtn">Update Status</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <script src="api.js"></script>
+    <script src="components.js"></script>
+    <script src="dashboard.js"></script>
+
+    <!-- Reservation Notification Sound -->
+    <audio id="reservationSound" preload="auto">
+        <source src="sounds/notification.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Toast Notification -->
+
+    </div>
+</body>
+
+</html>

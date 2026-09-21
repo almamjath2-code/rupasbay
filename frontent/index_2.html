@@ -1,0 +1,3289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rupa's Bay Restaurant &amp; Bar — Arugam Bay, Sri Lanka</title>
+  <meta name="description"
+    content="Beachfront restaurant &amp; bar in Arugam Bay, Sri Lanka. Rice &amp; curry, fresh seafood, live music Mon &amp; Fri, and tables on the sand.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --ocean-deep: #0F2E35;
+      --ocean-mid: #1C4F52;
+      --sand: #F2E8D5;
+      --coral: #E8623A;
+      --gold: #F0A93B;
+      --foam: #FAF6ED;
+      --ink: #16211F;
+      --line: rgba(22, 33, 31, 0.12);
+      --serif: 'Fraunces', serif;
+      --sans: 'Karla', sans-serif;
+      --mono: 'Space Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--foam);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--coral);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--coral);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--serif);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -.01em;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4.2vw, 52px);
+      margin-top: 14px;
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    p {
+      color: rgba(22, 33, 31, .78);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 14.5px;
+      letter-spacing: .02em;
+      padding: 15px 28px;
+      border-radius: 100px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    }
+
+    .btn-primary {
+      background: var(--coral);
+      color: var(--foam);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #d4552f;
+    }
+
+    .btn-ghost {
+      border-color: rgba(250, 246, 237, .55);
+      color: var(--foam);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(250, 246, 237, .12);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .btn-dark:hover {
+      background: var(--ink);
+      color: var(--foam);
+    }
+
+    section {
+      position: relative;
+    }
+
+    /* ---------- NAV ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      padding: 22px 0;
+      transition: background .35s ease, padding .35s ease, box-shadow .35s ease;
+    }
+
+    header.solid {
+      background: rgba(250, 246, 237, .92);
+      backdrop-filter: blur(10px);
+      padding: 14px 0;
+      box-shadow: 0 1px 0 var(--line);
+    }
+
+    .nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--foam);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    header.solid .logo {
+      color: var(--ink);
+    }
+
+    .logo .wave {
+      color: var(--coral);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 34px;
+    }
+
+    nav a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--foam);
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    header.solid nav a {
+      color: var(--ink);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1.5px;
+      background: currentColor;
+      transition: width .25s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    @media(min-width:900px) {
+      .nav-cta {
+        display: inline-flex;
+      }
+    }
+
+    .burger {
+      display: none;
+      font-size: 20px;
+      color: var(--foam);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    header.solid .burger {
+      color: var(--ink);
+    }
+
+    @media(max-width:899px) {
+      nav {
+        display: none;
+      }
+
+      .burger {
+        display: block;
+      }
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(ellipse 90% 60% at 20% 0%, rgba(240, 169, 59, .35), transparent 60%),
+        linear-gradient(180deg, var(--ocean-deep) 0%, var(--ocean-mid) 55%, #0b2226 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 82% 18%, rgba(240, 169, 59, .9) 0, rgba(240, 169, 59, .9) 46px, transparent 47px);
+      opacity: .9;
+      pointer-events: none;
+    }
+
+    .hero-waves {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      z-index: 1;
+      line-height: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      padding: 170px 0 220px;
+    }
+
+    .hero-tag {
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 9vw, 108px);
+      color: var(--foam);
+      font-weight: 700;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 500;
+      color: var(--gold);
+    }
+
+    .hero .sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      color: rgba(250, 246, 237, .82);
+      font-size: clamp(17px, 2vw, 22px);
+      max-width: 520px;
+      margin: 22px 0 40px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ticker */
+    .ticker-wrap {
+      background: var(--coral);
+      color: var(--foam);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 13px 0;
+      border-top: 1px solid rgba(255, 255, 255, .15);
+    }
+
+    .ticker {
+      display: inline-block;
+      animation: scroll 26s linear infinite;
+    }
+
+    .ticker span {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-right: 36px;
+    }
+
+    .ticker span::after {
+      content: "◆";
+      margin-left: 36px;
+      opacity: .6;
+      font-size: 10px;
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* wave divider generic */
+    .divider {
+      line-height: 0;
+    }
+
+    .divider svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about {
+      background: var(--foam);
+      padding: 120px 0 100px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    @media(min-width:900px) {
+      .about-grid {
+        grid-template-columns: 1.05fr .95fr;
+      }
+    }
+
+    .about-visual {
+      position: relative;
+      aspect-ratio: 5/5;
+      border-radius: 6px;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--gold), var(--coral) 55%, var(--ocean-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-visual .frame-label {
+      position: absolute;
+      bottom: 22px;
+      left: 22px;
+      right: 22px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: rgba(250, 246, 237, .9);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(250, 246, 237, .35);
+      padding-top: 12px;
+    }
+
+    .palm {
+      width: 56%;
+      opacity: .9;
+    }
+
+    .about-text p {
+      margin-top: 18px;
+      max-width: 520px;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 40px;
+      margin-top: 44px;
+      flex-wrap: wrap;
+    }
+
+    .stat b {
+      font-family: var(--serif);
+      font-size: 34px;
+      display: block;
+      color: var(--coral);
+    }
+
+    .stat span {
+      font-size: 12.5px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: rgba(22, 33, 31, .6);
+    }
+
+    /* ---------- WHY / FEATURES ---------- */
+    .features {
+      background: var(--sand);
+      padding: 90px 0;
+    }
+
+    .feat-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--line);
+      margin-top: 56px;
+      border: 1px solid var(--line);
+    }
+
+    @media(min-width:700px) {
+      .feat-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feat-card {
+      background: var(--sand);
+      padding: 38px 32px;
+    }
+
+    .feat-card i {
+      font-size: 22px;
+      color: var(--coral);
+    }
+
+    .feat-card h4 {
+      font-family: var(--serif);
+      font-size: 19px;
+      margin: 16px 0 8px;
+    }
+
+    .feat-card p {
+      font-size: 14.5px;
+    }
+
+    /* ---------- MENU ---------- */
+    .menu {
+      background: var(--ocean-deep);
+      color: var(--foam);
+      padding: 110px 0;
+    }
+
+    .menu .eyebrow {
+      color: var(--gold);
+    }
+
+    .menu h2 {
+      color: var(--foam);
+    }
+
+    .menu-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .menu-intro p {
+      color: rgba(250, 246, 237, .65);
+      max-width: 420px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 50px 0 40px;
+    }
+
+    .tab {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 10px 18px;
+      border-radius: 100px;
+      border: 1px solid rgba(250, 246, 237, .28);
+      color: rgba(250, 246, 237, .75);
+      cursor: pointer;
+      background: transparent;
+      transition: all .2s ease;
+    }
+
+    .tab.active,
+    .tab:hover {
+      background: var(--coral);
+      border-color: var(--coral);
+      color: var(--foam);
+    }
+
+    .menu-panel {
+      display: none;
+    }
+
+    .menu-panel.active {
+      display: block;
+      animation: fade .4s ease;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .menu-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    @media(min-width:800px) {
+      .menu-list {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 60px;
+      }
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(250, 246, 237, .14);
+    }
+
+    .menu-item h4 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--foam);
+    }
+
+    .menu-item p {
+      font-size: 13px;
+      color: rgba(250, 246, 237, .55);
+      margin-top: 4px;
+      max-width: 280px;
+    }
+
+    .menu-item .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--gold);
+      border: 1px solid rgba(240, 169, 59, .4);
+      padding: 2px 7px;
+      border-radius: 20px;
+      margin-top: 6px;
+    }
+
+    .price {
+      font-family: var(--mono);
+      font-size: 15px;
+      color: var(--gold);
+      white-space: nowrap;
+      align-self: flex-start;
+      margin-top: 2px;
+    }
+
+    .menu-foot {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .menu-image {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* ---------- GALLERY ---------- */
+    /* ---------- GALLERY ---------- */
+    /* ---------- GALLERY ---------- */
+
+    .gallery {
+      background: var(--foam);
+      padding: 110px 0;
+    }
+
+
+    .gal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 54px;
+    }
+
+
+    @media (min-width: 768px) {
+
+      .gal-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+    }
+
+
+    .gal-item {
+
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 1;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+
+    }
+
+
+    .gal-item:hover {
+
+      transform: scale(1.03);
+
+    }
+
+
+    .gal-item img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+
+    }
+
+
+
+    /* Dark overlay */
+
+    .gal-item::after {
+
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background: linear-gradient(to top,
+          rgba(0, 0, 0, 0.65),
+          rgba(0, 0, 0, 0.1));
+
+    }
+
+
+
+    /* Image title */
+
+    .gal-item span {
+
+      position: absolute;
+      left: 15px;
+      bottom: 15px;
+
+      z-index: 5;
+
+      color: white;
+
+      font-family: var(--mono);
+      font-size: 12px;
+
+      text-transform: uppercase;
+      letter-spacing: .08em;
+
+      font-weight: 600;
+
+    }
+
+
+
+    /* =========================
+   FOOD SWIPER
+========================= */
+
+
+    .g1 {
+
+      height: 100%;
+
+    }
+
+
+    .foodSwiper {
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-wrapper {
+
+      display: flex;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-slide {
+
+      flex-shrink: 0;
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+
+    .foodSwiper .swiper-slide img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+    }
+
+
+
+    /* Swiper dots */
+
+    .swiper-pagination {
+
+      z-index: 10;
+
+    }
+
+
+    .swiper-pagination-bullet {
+
+      background: white;
+
+    }
+
+
+    .swiper-pagination-bullet-active {
+
+      background: #ffc107;
+
+    }
+
+
+    .g2 {
+
+      height: 100%;
+
+    }
+
+
+    .foodSwiper {
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-wrapper {
+
+      display: flex;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-slide {
+
+      flex-shrink: 0;
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+
+    .foodSwiper .swiper-slide img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+    }
+
+
+
+    /* Swiper dots */
+
+    .swiper-pagination {
+
+      z-index: 10;
+
+    }
+
+
+    .swiper-pagination-bullet {
+
+      background: white;
+
+    }
+
+
+    .swiper-pagination-bullet-active {
+
+      background: #ffc107;
+
+    }
+
+    .g3 {
+
+      height: 100%;
+
+    }
+
+
+    .foodSwiper {
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-wrapper {
+
+      display: flex;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-slide {
+
+      flex-shrink: 0;
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+
+    .foodSwiper .swiper-slide img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+    }
+
+
+
+    /* Swiper dots */
+
+    .swiper-pagination {
+
+      z-index: 10;
+
+    }
+
+
+    .swiper-pagination-bullet {
+
+      background: white;
+
+    }
+
+
+    .swiper-pagination-bullet-active {
+
+      background: #ffc107;
+
+    }
+
+
+    .g4 {
+
+      height: 100%;
+
+    }
+
+
+    .foodSwiper {
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-wrapper {
+
+      display: flex;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-slide {
+
+      flex-shrink: 0;
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+
+    .foodSwiper .swiper-slide img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+    }
+
+
+
+    /* Swiper dots */
+
+    .swiper-pagination {
+
+      z-index: 10;
+
+    }
+
+
+    .swiper-pagination-bullet {
+
+      background: white;
+
+    }
+
+
+    .swiper-pagination-bullet-active {
+
+      background: #ffc107;
+
+    }
+
+    .g5 {
+
+      height: 100%;
+
+    }
+
+
+    .foodSwiper {
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-wrapper {
+
+      display: flex;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-slide {
+
+      flex-shrink: 0;
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+
+    .foodSwiper .swiper-slide img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+    }
+
+
+
+    /* Swiper dots */
+
+    .swiper-pagination {
+
+      z-index: 10;
+
+    }
+
+
+    .swiper-pagination-bullet {
+
+      background: white;
+
+    }
+
+
+    .swiper-pagination-bullet-active {
+
+      background: #ffc107;
+
+    }
+
+    .g6 {
+
+      height: 100%;
+
+    }
+
+
+    .foodSwiper {
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-wrapper {
+
+      display: flex;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-slide {
+
+      flex-shrink: 0;
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+
+    .foodSwiper .swiper-slide img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+    }
+
+
+
+    /* Swiper dots */
+
+    .swiper-pagination {
+
+      z-index: 10;
+
+    }
+
+
+    .swiper-pagination-bullet {
+
+      background: white;
+
+    }
+
+
+    .swiper-pagination-bullet-active {
+
+      background: #ffc107;
+
+    }
+
+
+    .g7 {
+
+      height: 100%;
+
+    }
+
+
+    .foodSwiper {
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-wrapper {
+
+      display: flex;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-slide {
+
+      flex-shrink: 0;
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+
+    .foodSwiper .swiper-slide img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+    }
+
+
+
+    /* Swiper dots */
+
+    .swiper-pagination {
+
+      z-index: 10;
+
+    }
+
+
+    .swiper-pagination-bullet {
+
+      background: white;
+
+    }
+
+
+    .swiper-pagination-bullet-active {
+
+      background: #ffc107;
+
+    }
+
+    .g8 {
+
+      height: 100%;
+
+    }
+
+
+    .foodSwiper {
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-wrapper {
+
+      display: flex;
+      height: 100%;
+
+    }
+
+
+    .foodSwiper .swiper-slide {
+
+      flex-shrink: 0;
+
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+
+    .foodSwiper .swiper-slide img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+    }
+
+
+
+    /* Swiper dots */
+
+    .swiper-pagination {
+
+      z-index: 10;
+
+    }
+
+
+    .swiper-pagination-bullet {
+
+      background: white;
+
+    }
+
+
+    .swiper-pagination-bullet-active {
+
+      background: #ffc107;
+
+    }
+
+    /* Keep all gallery boxes same size */
+
+    .g1,
+    .g2,
+    .g3,
+    .g4,
+    .g5,
+    .g6,
+    .g7,
+    .g8 {
+
+      grid-row: auto;
+      grid-column: auto;
+
+    }
+
+    /* ---------- REVIEWS ---------- */
+    /* =========================
+   REVIEWS SECTION
+========================= */
+
+    .reviews {
+      padding: 90px 0;
+      background: #faf6ed;
+    }
+
+
+    .reviews .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+
+    .reviews h2 {
+      font-size: 42px;
+      margin-bottom: 40px;
+      color: #16211f;
+    }
+
+
+
+    /* =========================
+   REVIEW TOP AREA
+========================= */
+
+    .rev-top {
+
+      display: grid;
+
+      grid-template-columns: 350px 1fr;
+
+      gap: 40px;
+
+      align-items: start;
+
+    }
+
+
+
+    /* =========================
+   RATING SUMMARY
+========================= */
+
+    .rev-score {
+
+      background: white;
+
+      padding: 35px;
+
+      border-radius: 20px;
+
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    }
+
+
+
+    .rev-score .big {
+
+      font-size: 70px;
+
+      font-weight: 700;
+
+      color: #16211f;
+
+    }
+
+
+
+    .stars {
+
+      color: #f5a623;
+
+      font-size: 25px;
+
+      letter-spacing: 3px;
+
+    }
+
+
+
+    .rev-score p {
+
+      color: #777;
+
+      margin: 10px 0 25px;
+
+    }
+
+
+
+    /* =========================
+   RATING BARS
+========================= */
+
+
+    .bar-row {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 12px;
+
+      font-size: 14px;
+
+    }
+
+
+
+    .bar-track {
+
+      flex: 1;
+
+      height: 10px;
+
+      background: #eee;
+
+      border-radius: 20px;
+
+      overflow: hidden;
+
+    }
+
+
+
+    .bar-fill {
+
+      height: 100%;
+
+      width: 0%;
+
+      background: #f5a623;
+
+      border-radius: 20px;
+
+    }
+
+
+
+    /* =========================
+   REVIEW CARDS
+========================= */
+
+
+    .rev-cards {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 20px;
+
+    }
+
+
+
+    .rev-card {
+
+      background: white;
+
+      padding: 25px;
+
+      border-radius: 18px;
+
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    }
+
+
+
+    .rev-card p {
+
+      line-height: 1.7;
+
+      color: #444;
+
+      margin: 15px 0;
+
+    }
+
+
+
+    .rev-name {
+
+      font-weight: 600;
+
+      color: #16211f;
+
+    }
+
+
+
+    /* =========================
+   WRITE REVIEW FORM
+========================= */
+
+
+    .write-review {
+
+      margin-top: 60px;
+
+      background: white;
+
+      padding: 35px;
+
+      border-radius: 25px;
+
+      max-width: 650px;
+
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    }
+
+
+
+    .write-review h3 {
+
+      font-size: 28px;
+
+      margin-bottom: 25px;
+
+      color: #16211f;
+
+    }
+
+
+
+    .write-review input,
+    .write-review textarea,
+    .write-review select {
+
+
+      width: 100%;
+
+      padding: 15px;
+
+      margin-bottom: 15px;
+
+      border: 1px solid #ddd;
+
+      border-radius: 12px;
+
+      font-size: 15px;
+
+      outline: none;
+
+    }
+
+
+
+    .write-review input:focus,
+    .write-review textarea:focus,
+    .write-review select:focus {
+
+      border-color: #16211f;
+
+    }
+
+
+
+    .write-review textarea {
+
+      height: 130px;
+
+      resize: none;
+
+    }
+
+
+
+    /* =========================
+   PHOTO UPLOAD
+========================= */
+
+
+    .upload-box {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+
+      margin: 15px 0;
+
+      border: 2px dashed #bbb;
+
+      border-radius: 15px;
+
+      cursor: pointer;
+
+      color: #555;
+
+      transition: 0.3s;
+
+    }
+
+
+
+    .upload-box:hover {
+
+      border-color: #16211f;
+
+      background: #fafafa;
+
+    }
+
+
+
+    .upload-box input {
+
+      display: none;
+
+    }
+
+
+
+    /* =========================
+   BUTTON
+========================= */
+
+
+    .write-review .btn-primary {
+
+
+      width: 100%;
+
+      padding: 15px;
+
+      border: none;
+
+      border-radius: 12px;
+
+      background: #16211f;
+
+      color: white;
+
+      font-size: 16px;
+
+      cursor: pointer;
+
+      transition: 0.3s;
+
+    }
+
+
+
+    .write-review .btn-primary:hover {
+
+      opacity: 0.85;
+
+    }
+
+
+
+    /* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+
+    @media(max-width:900px) {
+
+
+      .rev-top {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+
+      .rev-cards {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+
+      .reviews h2 {
+
+        font-size: 32px;
+
+      }
+
+
+    }
+
+
+
+    @media(max-width:500px) {
+
+
+      .write-review {
+
+        padding: 25px;
+
+      }
+
+
+      .rev-score .big {
+
+        font-size: 55px;
+
+      }
+
+
+    }
+
+    /* ---------- EVENTS ---------- */
+    .events {
+      background: var(--ocean-mid);
+      color: var(--foam);
+      padding: 100px 0;
+    }
+
+    .events .eyebrow {
+      color: var(--gold);
+    }
+
+    .events h2 {
+      color: var(--foam);
+    }
+
+    .ev-list {
+      margin-top: 54px;
+      border-top: 1px solid rgba(250, 246, 237, .18);
+    }
+
+    .ev-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 26px 0;
+      border-bottom: 1px solid rgba(250, 246, 237, .18);
+      align-items: center;
+    }
+
+    @media(min-width:760px) {
+      .ev-row {
+        grid-template-columns: 160px 1fr auto;
+      }
+    }
+
+    .ev-day {
+      font-family: var(--mono);
+      color: var(--gold);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .ev-name {
+      font-family: var(--serif);
+      font-size: 23px;
+    }
+
+    .ev-desc {
+      font-size: 13.5px;
+      color: rgba(250, 246, 237, .6);
+      grid-column: 1/-1;
+    }
+
+    @media(min-width:760px) {
+      .ev-desc {
+        grid-column: 2/3;
+        margin-top: -6px;
+      }
+    }
+
+    /* ---------- RESERVATION ---------- */
+    .reserve {
+      background: var(--foam);
+      padding: 110px 0;
+    }
+
+    .res-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 54px;
+    }
+
+    @media(min-width:960px) {
+      .res-grid {
+        grid-template-columns: .8fr 1.2fr;
+      }
+    }
+
+    .res-info p {
+      margin-top: 16px;
+      max-width: 380px;
+    }
+
+    .info-line {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 22px;
+      font-size: 14.5px;
+    }
+
+    .info-line i {
+      color: var(--coral);
+      margin-top: 3px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1/-1;
+    }
+
+    label {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: rgba(22, 33, 31, .55);
+    }
+
+    input,
+    select,
+    textarea {
+      font-family: var(--sans);
+      font-size: 15px;
+      padding: 13px 14px;
+      border-radius: 4px;
+      border: 1.5px solid var(--line);
+      background: var(--sand);
+      color: var(--ink);
+      outline: none;
+      transition: border-color .2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--coral);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .seat-toggle {
+      display: flex;
+      gap: 10px;
+    }
+
+    .seat-opt {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      border: 1.5px solid var(--line);
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+
+    .seat-opt.selected {
+      border-color: var(--coral);
+      background: rgba(232, 98, 58, .08);
+      color: var(--coral);
+    }
+
+    .confirm-box {
+      display: none;
+      grid-column: 1/-1;
+      background: var(--ocean-deep);
+      color: var(--foam);
+      padding: 22px 24px;
+      border-radius: 6px;
+      font-size: 14.5px;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .confirm-box.show {
+      display: flex;
+    }
+
+    .confirm-box i {
+      font-size: 22px;
+      color: var(--gold);
+    }
+
+    /* ---------- CONTACT / MAP ---------- */
+    .contact {
+      background: var(--ocean-deep);
+      color: var(--foam);
+      padding: 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    @media(min-width:900px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .contact-info {
+      padding: 100px 60px;
+    }
+
+    .contact-info .eyebrow {
+      color: var(--gold);
+    }
+
+    .contact-info h2 {
+      color: var(--foam);
+    }
+
+    .c-list {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .c-list a,
+    .c-list div {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 15px;
+    }
+
+    .c-list i {
+      color: var(--coral);
+      font-size: 18px;
+      margin-top: 2px;
+    }
+
+    .hours {
+      margin-top: 36px;
+      border-top: 1px solid rgba(250, 246, 237, .15);
+      padding-top: 24px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      padding: 6px 0;
+      color: rgba(250, 246, 237, .7);
+    }
+
+    .map-embed {
+      min-height: 420px;
+      height: 100%;
+    }
+
+    .map-embed iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: 0;
+      filter: grayscale(.2) contrast(1.05);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: #0B2226;
+      color: rgba(250, 246, 237, .7);
+      padding: 60px 0 30px;
+    }
+
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    @media(min-width:800px) {
+      .foot-grid {
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      }
+    }
+
+    .foot-logo {
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--foam);
+      font-weight: 700;
+    }
+
+    .foot-logo .wave {
+      color: var(--coral);
+    }
+
+    footer p {
+      color: rgba(250, 246, 237, .55);
+      font-size: 13.5px;
+      margin-top: 12px;
+      max-width: 280px;
+    }
+
+    .foot-col h5 {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: rgba(250, 246, 237, .85);
+      margin-bottom: 16px;
+    }
+
+    .foot-col li {
+      margin-bottom: 10px;
+      font-size: 13.5px;
+    }
+
+    .foot-col a:hover {
+      color: var(--coral);
+    }
+
+    .foot-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 54px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(250, 246, 237, .12);
+      font-size: 12.5px;
+    }
+
+    .social {
+      display: flex;
+      gap: 14px;
+    }
+
+    .social a {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(250, 246, 237, .25);
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s ease;
+    }
+
+    .social a:hover {
+      background: var(--coral);
+      border-color: var(--coral);
+    }
+
+    ::selection {
+      background: var(--coral);
+      color: var(--foam);
+    }
+
+    @media(prefers-reduced-motion: reduce) {
+      .ticker {
+        animation: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header id="siteHeader">
+    <div class="container nav-row">
+      <a href="#top" class="logo"><span class="wave">〜</span> Rupa's Bay</a>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <a href="#reserve" class="btn btn-dark nav-cta">Reserve a Table</a>
+        <button class="burger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="container hero-inner">
+      <div class="eyebrow hero-tag">Arugam Bay · Sri Lanka</div>
+      <h1>
+        Fresh flavors, handcrafted dishes, <br>
+        and a <em>front-row seat</em> to the surf.
+      </h1>
+      <p class="sub">Experience the best of beachfront dining with our freshly prepared à la carte menu, delicious
+        seafood, and refreshing drinks, all served with breathtaking views of Baby Point, Arugam Bay.</p>
+      <div class="hero-ctas">
+        <a href="#reserve" class="btn btn-primary">Reserve a Table</a>
+        <a href="#menu" class="btn btn-ghost">View Menu</a>
+      </div>
+    </div>
+    <div class="hero-waves">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,64 C240,120 480,0 720,48 C960,96 1200,32 1440,72 L1440,120 L0,120 Z" fill="#FAF6ED" />
+      </svg>
+    </div>
+  </section>
+
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>Beachfront Dining</span><span>Live Music Mon &amp; Fri</span><span>Best Rice &amp; Curry in Arugam
+        Bay</span><span>Happy Hour Daily</span><span>Free Wi-Fi</span>
+    </div>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+
+      <div class="about-visual">
+
+        <img src="images/about.jpg" alt="Rupa's Bay Restaurant" class="about-image">
+
+        <div class="frame-label">
+          Steps from Baby Point · since the first tide brought us here
+        </div>
+
+      </div>
+
+      <div class="about-text">
+
+        <div class="eyebrow">Our Story</div>
+        <h2>Fed by the same wave that brought the surfers in.</h2>
+        <p>Rupa's Bay sits where the sand meets the tables — a short walk from Baby Point and Main Point, the surf
+          breaks that put Arugam Bay on the map. What started as a simple kitchen serving big plates to hungry surfers
+          has grown into a full restaurant and bar, without losing the reason people first came: honest food, cold
+          drinks, and a view of the water.</p>
+        <p>Our menu leans into what's local — rice, curry, fresh reef fish — alongside international dishes and vegan
+          options for every kind of traveller who ends up at our tables.</p>
+        <div class="stat-row">
+          <div class="stat"><b>4.9</b><span>Average Rating</span></div>
+          <div class="stat"><b>61+</b><span>Guest Reviews</span></div>
+          <div class="stat"><b>2</b><span>Live Music Nights / Week</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="features">
+    <div class="container">
+      <div class="eyebrow">Why Rupa's Bay</div>
+      <h2 style="max-width:640px;">Everything a beach day asks for, in one place.</h2>
+      <div class="feat-grid">
+        <div class="feat-card">
+          <i class="fa-solid fa-umbrella-beach"></i>
+          <h4>Tables on the Sand</h4>
+          <p>Beachfront and open-air seating with the water always in view — indoors if you'd rather stay out of the
+            sun.</p>
+        </div>
+        <div class="feat-card">
+          <i class="fa-solid fa-fish"></i>
+          <h4>Catch of the Day</h4>
+          <p>Fresh reef fish and prawns sourced daily, alongside our rice &amp; curry the region is known for.</p>
+        </div>
+        <div class="feat-card">
+          <i class="fa-solid fa-music"></i>
+          <h4>Live Music, Mon &amp; Fri</h4>
+          <p>Local bands and DJs turn the bar into the best-kept end to a day of surfing.</p>
+        </div>
+        <div class="feat-card">
+          <i class="fa-solid fa-leaf"></i>
+          <h4>Vegan &amp; Healthy</h4>
+          <p>A full plant-based menu that doesn't feel like an afterthought.</p>
+        </div>
+        <div class="feat-card">
+          <i class="fa-solid fa-martini-glass-citrus"></i>
+          <h4> Happy Hour</h4>
+          <p>Cold beers, arrack cocktails, and fresh juice — every single day.</p>
+        </div>
+        <div class="feat-card">
+          <i class="fa-solid fa-person-swimming"></i>
+          <h4>Steps from the Surf</h4>
+          <p>Minutes from Baby Point and Main Point — walk in straight off the water.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MENU ============ -->
+  <!-- ============ MENU ============ -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <div class="menu-intro">
+        <div>
+          <div class="eyebrow">The Menu</div>
+          <h2>Big plates,<br>cold drinks.</h2>
+        </div>
+        <p>A sample of what's on offer — the full menu changes with what's fresh that day.</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs" id="menuTabs">
+        <button class="tab active" data-tab="SMALL PLATES">Small Plates</button>
+        <button class="tab" data-tab="MAIN PLATES">Main Plates</button>
+        <button class="tab" data-tab="BURGERS">Burgers</button>
+        <button class="tab" data-tab="PANINIS">Paninis</button>
+        <button class="tab" data-tab="Drinks & Cocktails">Drinks & Cocktails</button>
+        <button class="tab" data-tab="SALADS">Salads</button>
+        <button class="tab" data-tab="WOOD-FRIED PIZZA">Wood-Fried Pizza</button>
+        <button class="tab" data-tab="DESSERTS">Desserts</button>
+      </div>
+
+      <!-- Menu panels will be generated by JavaScript -->
+      <div id="menuContainer"></div>
+
+      <div class="menu-foot">
+        <a href="#reserve" class="btn btn-primary">Reserve a Table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="eyebrow">Gallery</div>
+      <h2>A taste of the bay.</h2>
+
+      <div class="gal-grid">
+
+        <div class="gal-item g1">
+          <div class="swiper foodSwiper">
+
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+                <img src="images/food1.jpg" alt="Food 1">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/food2.jpg" alt="Food 2">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/food3.jpg" alt="Food 3">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/food4.jpg" alt="Food 4">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/food5.jpg" alt="Food 5">
+              </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+          </div>
+
+          <span>Food</span>
+        </div>
+
+        <div class="gal-item g2">
+          <div class="swiper foodSwiper">
+
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+                <img src="images/beachfront1.jpg" alt="Beachfront 1">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/beachfront2.jpg" alt="Beachfront 2">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/beachfront3.jpg" alt="Beachfront 3">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/beachfront4.jpg" alt="Beachfront 4">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/beachfront5.jpg" alt="Beachfront 5">
+              </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+          </div>
+          <span>Beachfront</span>
+        </div>
+
+        <div class="gal-item g3">
+          <div class="swiper foodSwiper">
+
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+                <img src="images/bbq1.jpg" alt="BBQ Night 1">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/bbq2.jpg" alt="BBQ Night 2">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/bbq3.jpg" alt="BBQ Night 3">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/bbq4.jpg" alt="BBQ Night 4">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/bbq5.jpg" alt="BBQ Night 5">
+              </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+          </div>
+          <span>BBQ Night</span>
+        </div>
+
+        <div class="gal-item g4">
+          <div class="swiper foodSwiper">
+
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+                <img src="images/cocktails1.jpg" alt="Cocktails 1">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/cocktails2.jpg" alt="Cocktails 2">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/cocktails3.jpg" alt="Cocktails 3">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/cocktails4.jpg" alt="Cocktails 4">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/cocktails5.jpg" alt="Cocktails 5">
+              </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+          </div>
+          <span>Cocktails</span>
+        </div>
+
+        <div class="gal-item g5">
+          <div class="swiper foodSwiper">
+
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+                <img src="images/sunset-bar1.jpg" alt="Sunset Bar 1">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/sunset-bar2.jpg" alt="Sunset Bar 2">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/sunset-bar3.jpg" alt="Sunset Bar 3">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/sunset-bar4.jpg" alt="Sunset Bar 4">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/sunset-bar5.jpg" alt="Sunset Bar 5">
+              </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+          </div>
+          <span>Sunset Bar</span>
+        </div>
+
+        <div class="gal-item g8">
+          <div class="swiper foodSwiper">
+
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+                <img src="images/desserts1.jpg" alt="Desserts 1">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/desserts2.jpg" alt="Desserts 2">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/desserts3.jpg" alt="Desserts 3">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/desserts4.jpg" alt="Desserts 4">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/desserts5.jpg" alt="Desserts 5">
+              </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+          </div>
+          <span>Desserts</span>
+        </div>
+
+        <div class="gal-item g6">
+          <div class="swiper foodSwiper">
+
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+                <img src="images/live-music1.jpg" alt="Live Music 1">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/live-music2.jpg" alt="Live Music 2">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/live-music3.jpg" alt="Live Music 3">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/live-music4.jpg" alt="Live Music 4">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/live-music5.jpg" alt="Live Music 5">
+              </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+          </div>
+          <span>Live Music</span>
+        </div>
+
+        <div class="gal-item g7">
+          <div class="swiper foodSwiper">
+
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+                <img src="images/interior1.jpg" alt="Interior 1">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/interior2.jpg" alt="Interior 2">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/interior3.jpg" alt="Interior 3">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/interior4.jpg" alt="Interior 4">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="images/interior5.jpg" alt="Interior 5">
+              </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+          </div>
+          <span>Interior</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="reviews" id="reviews">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        Guest Reviews
+      </div>
+
+      <h2>
+        What people say after a plate here.
+      </h2>
+
+
+      <div class="rev-top" style="margin-top:50px;">
+
+
+        <!-- Rating Summary -->
+
+        <div class="rev-score">
+
+          <div class="big" id="averageRating">
+            0.0
+          </div>
+
+
+          <div class="stars" id="stars">
+            ★★★★★
+          </div>
+
+
+          <p id="reviewCount">
+            Based on 0 reviews
+          </p>
+
+
+
+          <div class="bars">
+
+
+            <div class="bar-row">
+              <span>5★</span>
+
+              <div class="bar-track">
+                <div class="bar-fill" id="fiveStar"></div>
+              </div>
+
+              <span id="fivePercent">
+                0%
+              </span>
+
+            </div>
+
+
+
+            <div class="bar-row">
+
+              <span>4★</span>
+
+              <div class="bar-track">
+                <div class="bar-fill" id="fourStar"></div>
+              </div>
+
+              <span id="fourPercent">
+                0%
+              </span>
+
+            </div>
+
+
+
+
+            <div class="bar-row">
+
+              <span>3★</span>
+
+              <div class="bar-track">
+                <div class="bar-fill" id="threeStar"></div>
+              </div>
+
+              <span id="threePercent">
+                0%
+              </span>
+
+            </div>
+
+
+
+
+
+            <div class="bar-row">
+
+              <span>2★</span>
+
+              <div class="bar-track">
+                <div class="bar-fill" id="twoStar"></div>
+              </div>
+
+              <span id="twoPercent">
+                0%
+              </span>
+
+            </div>
+
+
+
+
+
+            <div class="bar-row">
+
+              <span>1★</span>
+
+              <div class="bar-track">
+                <div class="bar-fill" id="oneStar"></div>
+              </div>
+
+              <span id="onePercent">
+                0%
+              </span>
+
+            </div>
+
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- Reviews From Database -->
+
+        <div class="rev-cards" id="reviewContainer">
+
+          <!-- Reviews appear here -->
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+      <!-- Write Review -->
+
+      <div class="write-review">
+
+
+        <h3>
+          Write a Review
+        </h3>
+
+
+
+        <input type="text" id="reviewName" placeholder="Your Name" required>
+
+
+
+        <input type="email" id="reviewEmail" placeholder="Your Email" required>
+
+
+
+
+
+        <label>
+          Your Rating
+        </label>
+
+
+        <select id="reviewRating">
+
+
+          <option value="5">
+            ★★★★★
+          </option>
+
+
+          <option value="4">
+            ★★★★☆
+          </option>
+
+
+          <option value="3">
+            ★★★☆☆
+          </option>
+
+
+          <option value="2">
+            ★★☆☆☆
+          </option>
+
+
+          <option value="1">
+            ★☆☆☆☆
+          </option>
+
+
+        </select>
+
+
+
+
+
+
+        <textarea id="reviewComment" placeholder="Write your review" required></textarea>
+
+
+
+
+
+
+        <!-- Photo Upload -->
+
+
+
+
+
+
+        <!-- Submit Button -->
+
+        <button class="btn btn-primary" onclick="submitReview()">
+
+          Submit Review
+
+        </button>
+
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+  </section>
+
+  <!-- ============ EVENTS ============ -->
+  <section class="events" id="events">
+    <div class="container">
+      <div class="eyebrow">What's On</div>
+      <h2>Reasons to stay past sunset.</h2>
+      <div class="ev-list">
+        <div class="ev-row">
+          <div class="ev-day">Monday</div>
+          <div class="ev-name">Live Music Night</div>
+          <div class="ev-desc">Local bands take the bar from 7pm.</div>
+          <a href="#reserve" class="btn btn-ghost" style="padding:10px 20px; font-size:12.5px;">Reserve</a>
+        </div>
+        <div class="ev-row">
+          <div class="ev-day">Friday</div>
+          <div class="ev-name">Live Music Night</div>
+          <div class="ev-desc">Second weekly session — the busiest night of the week.</div>
+          <a href="#reserve" class="btn btn-ghost" style="padding:10px 20px; font-size:12.5px;">Reserve</a>
+        </div>
+        <div class="ev-row">
+          <div class="ev-day">Sunday</div>
+          <div class="ev-name">BBQ Night</div>
+          <div class="ev-desc">Charcoal grill runs late, whole fish and skewers.</div>
+          <a href="#reserve" class="btn btn-ghost" style="padding:10px 20px; font-size:12.5px;">Reserve</a>
+        </div>
+        <div class="ev-row">
+          <div class="ev-day">Daily, 4–6pm</div>
+          <div class="ev-name">Happy Hour</div>
+          <div class="ev-desc">Half-price local drinks at the bar.</div>
+          <a href="#reserve" class="btn btn-ghost" style="padding:10px 20px; font-size:12.5px;">Reserve</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESERVATION ============ -->
+  <section class="reserve" id="reserve">
+    <div class="container res-grid">
+      <div class="res-info">
+        <div class="eyebrow">Reservations</div>
+        <h2>Save your table by the water.</h2>
+        <p>Beachfront tables go fast, especially on live music nights. Book ahead and we'll have it ready when you
+          arrive.</p>
+        <div class="info-line"><i class="fa-solid fa-phone"></i><span>+94 XX XXX XXXX</span></div>
+        <div class="info-line"><i class="fa-solid fa-envelope"></i><span>hello@rupasbay.lk</span></div>
+        <div class="info-line"><i class="fa-solid fa-location-dot"></i><span>Arugam Bay, Sri Lanka</span></div>
+      </div>
+      <form id="reserveForm">
+        <div class="field"><label>Name</label><input id="resName" type="text" required placeholder="Your full name">
+        </div>
+        <div class="field"><label>Phone</label><input id="resPhone" type="tel" required placeholder="+94 ..."></div>
+        <div class="field"><label>Email</label><input id="resEmail" type="email" required placeholder="you@email.com">
+        </div>
+        <div class="field"><label>Guests</label><input id="resGuests" type="number" min="1" max="20" required
+            placeholder="2"></div>
+        <div class="field"><label>Date</label><input id="resDate" type="date" required></div>
+        <div class="field"><label>Time</label><input id="resTime" type="time" required></div>
+        <div class="field full">
+          <label>Seating Preference</label>
+          <div class="seat-toggle">
+            <div class="seat-opt selected" data-seat="beach">Beachfront</div>
+            <div class="seat-opt" data-seat="indoor">Indoor</div>
+          </div>
+        </div>
+        <div class="field full"><label>Special Request</label><textarea id="resSpecial"
+            placeholder="Allergies, celebrations, seating notes..."></textarea></div>
+        <div class="field full"><button type="submit" class="btn btn-primary"
+            style="width:100%; justify-content:center;">Reserve a Table</button></div>
+        <div class="confirm-box" id="confirmBox"><i class="fa-solid fa-circle-check"></i><span>Table request received —
+            we'll confirm by phone or email shortly.</span></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / MAP ============ -->
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="eyebrow">Find Us</div>
+        <h2>On the sand at Arugam Bay.</h2>
+        <div class="c-list">
+          <div><i class="fa-solid fa-location-dot"></i><span>Arugam Bay, Eastern Province, Sri Lanka</span></div>
+          <a href="tel:+940770638482"><i class="fa-solid fa-phone"></i><span>+94 077 063 8482</span></a>
+          <a href="mailto:hello@rupasbay.lk"><i class="fa-solid fa-envelope"></i><span>hello@rupasbay.lk</span></a>
+        </div>
+        <div class="hours">
+          <div class="hours-row"><span>Mon – Thu</span><span>8:00 AM – 11:00 PM</span></div>
+          <div class="hours-row"><span>Fri – Sun</span><span>8:00 AM – 12:30 AM</span></div>
+        </div>
+        <div class="social" style="margin-top:30px;">
+          <a
+            href="https://www.instagram.com/rupasbay.arugambay?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-tripadvisor"></i></a>
+        </div>
+      </div>
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps?q=Rupa%27s+Beach+Restaurant+%26+Bar+Arugam+Bay&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-logo"><span class="wave">〜</span> Rupa's Bay</div>
+          <p>Beachfront restaurant &amp; bar in Arugam Bay, Sri Lanka. Rice, curry, seafood, and live music on the sand.
+          </p>
+        </div>
+        <div class="foot-col">
+          <h5>Explore</h5>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#events">Events</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h5>Visit</h5>
+          <ul>
+            <li><a href="#reserve">Reservations</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h5>Contact</h5>
+          <ul>
+            <li>Arugam Bay, Sri Lanka</li>
+            <li>+94 077 063 8482</li>
+            <li>hello@rupasbay.lk</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Rupa's Bay Restaurant &amp; Bar. All rights reserved.</span>
+        <span>Designed &amp; built with care.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+  <script>
+    // ============ API CONFIGURATION ============
+    const API_URL = "http://rupas-bay-apicheck-env.eba-niam9pc4.ap-south-1.elasticbeanstalk.com";
+    const ADMIN_API_KEY = "AR7432ar";
+
+    console.log("✅ Frontend initialized - Connected to:", API_URL);
+
+    // ============ STICKY HEADER ============
+    const header = document.getElementById("siteHeader");
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("solid", window.scrollY > 40);
+    });
+
+    // ============ MOBILE MENU ============
+    const burger = document.querySelector(".burger");
+    const mainNav = document.getElementById("mainNav");
+    burger.addEventListener("click", () => {
+      const isOpen = mainNav.style.display === "block";
+      mainNav.style.display = isOpen ? "none" : "block";
+      if (!isOpen) {
+        mainNav.style.position = "absolute";
+        mainNav.style.top = "100%";
+        mainNav.style.left = "0";
+        mainNav.style.right = "0";
+        mainNav.style.background = "#FAF6ED";
+        mainNav.style.padding = "20px 28px";
+        mainNav.querySelectorAll("ul").forEach(ul => {
+          ul.style.flexDirection = "column";
+          ul.style.gap = "16px";
+        });
+        mainNav.querySelectorAll("a").forEach(a => {
+          a.style.color = "#16211F";
+        });
+      }
+    });
+
+    // ============ LOAD MENU ============
+    async function loadMenu() {
+      try {
+        const response = await fetch(`${API_URL}/api/menu`);
+        if (!response.ok) throw new Error("Failed to load menu");
+
+        const menuItems = await response.json();
+        console.log("📋 Menu loaded:", menuItems.length, "items");
+
+        const categories = ["SMALL PLATES", "MAIN PLATES", "BURGERS", "PANINIS", "DESSERTS", "DRINKS & COCKTAILS", "SALADS", "WOOD-FRIED PIZZA"];
+        const container = document.getElementById("menuContainer");
+        container.innerHTML = "";
+
+        categories.forEach((category, index) => {
+          const items = menuItems.filter(item => item.category === category);
+          if (items.length === 0) return;
+
+          const panel = document.createElement("div");
+          panel.className = `menu-panel ${index === 0 ? 'active' : ''}`;
+          panel.dataset.panel = category;
+
+          const list = document.createElement("div");
+          list.className = "menu-list";
+
+          items.forEach(item => {
+            list.innerHTML += `
+              <div class="menu-item">
+                <img src="${item.image_url ? API_URL + item.image_url : 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22%3E%3Crect fill=%22%23E8623A%22 width=%22120%22 height=%22120%22/%3E%3Ctext x=%2260%22 y=%2260%22 font-size=%2212%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3E${item.name.substring(0, 10)}%3C/text%3E%3C/svg%3E'}" alt="${item.name}" class="menu-image">
+                <div class="menu-content">
+                  <h4>${item.name}</h4>
+                  <p>${item.description || 'Delicious dish prepared fresh daily'}</p>
+                  ${item.is_chef_pick ? '<span class="tag">Chef\'s Pick</span>' : ''}
+                </div>
+                <span class="price">Rs ${item.price_lkr}</span>
+              </div>
+            `;
+          });
+
+          panel.appendChild(list);
+          container.appendChild(panel);
+        });
+
+        // Tab functionality
+        document.querySelectorAll(".tab").forEach(tab => {
+          tab.addEventListener("click", () => {
+            document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+            document.querySelectorAll(".menu-panel").forEach(p => p.classList.remove("active"));
+            tab.classList.add("active");
+            const panel = document.querySelector(`[data-panel="${tab.dataset.tab}"]`);
+            if (panel) panel.classList.add("active");
+          });
+        });
+      } catch (error) {
+        console.error("❌ Menu load error:", error);
+        document.getElementById("menuContainer").innerHTML = '<div class="error">Unable to load menu. Please refresh.</div>';
+      }
+    }
+
+    // ============ LOAD REVIEWS & STATS ============
+    async function loadReviews() {
+      try {
+        const response = await fetch(`${API_URL}/api/reviews`);
+        const reviews = await response.json();
+        console.log("⭐ Reviews loaded:", reviews.length, "items");
+
+        const statsResponse = await fetch(`${API_URL}/api/reviews/stats`);
+        const stats = await statsResponse.json();
+
+        // Update rating
+        document.getElementById("averageRating").textContent = stats.average_rating.toFixed(1);
+        document.getElementById("reviewCount").textContent = `Based on ${stats.total_reviews} reviews`;
+
+        // Update bars
+        const total = stats.total_reviews || 1;
+        const distribution = stats.rating_distribution;
+
+        document.getElementById("fiveStar").style.width = ((distribution[5] / total) * 100) + "%";
+        document.getElementById("fivePercent").textContent = Math.round((distribution[5] / total) * 100) + "%";
+
+        document.getElementById("fourStar").style.width = ((distribution[4] / total) * 100) + "%";
+        document.getElementById("fourPercent").textContent = Math.round((distribution[4] / total) * 100) + "%";
+
+        document.getElementById("threeStar").style.width = ((distribution[3] / total) * 100) + "%";
+        document.getElementById("threePercent").textContent = Math.round((distribution[3] / total) * 100) + "%";
+
+        document.getElementById("twoStar").style.width = ((distribution[2] / total) * 100) + "%";
+        document.getElementById("twoPercent").textContent = Math.round((distribution[2] / total) * 100) + "%";
+
+        document.getElementById("oneStar").style.width = ((distribution[1] / total) * 100) + "%";
+        document.getElementById("onePercent").textContent = Math.round((distribution[1] / total) * 100) + "%";
+
+        // Display reviews
+        const container = document.getElementById("reviewContainer");
+        container.innerHTML = "";
+        reviews.slice(0, 6).forEach(review => {
+          const stars = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
+          container.innerHTML += `
+    <div class="rev-card">
+
+      ${review.photo_url ?
+              `<img src="${API_URL}/${review.photo_url}" class="review-photo">`
+              : ""
+            }
+
+      <div class="stars">${stars}</div>
+
+      <p>${review.comment || "Great experience!"}</p>
+
+      <p class="rev-name">
+        — ${review.name || "Guest"}
+      </p>
+
+    </div>
+  `;
+        });
+      } catch (error) {
+        console.error("❌ Reviews load error:", error);
+      }
+    }
+
+    // ============ LOAD EVENTS ============
+    async function loadEvents() {
+      try {
+        const response = await fetch(`${API_URL}/api/events`);
+        const events = await response.json();
+        console.log("📅 Events loaded:", events.length, "items");
+
+        const container = document.getElementById("eventsList");
+        container.innerHTML = "";
+
+        events.forEach(event => {
+          const date = new Date(event.event_date);
+          const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          const dayName = days[date.getDay()];
+
+          container.innerHTML += `
+            <div class="ev-row">
+              <div class="ev-day">${dayName}</div>
+              <div class="ev-name">${event.title}</div>
+              <div class="ev-desc">${event.description || 'Special event'}</div>
+              <a href="#reserve" class="btn btn-ghost" style="padding:10px 20px; font-size:12.5px;">Reserve</a>
+            </div>
+          `;
+        });
+      } catch (error) {
+        console.error("❌ Events load error:", error);
+      }
+    }
+
+    // ============ SUBMIT REVIEW ============
+    // ============ SUBMIT REVIEW ============
+    // ============ SUBMIT REVIEW ============
+    // ============ SUBMIT REVIEW ============
+    async function submitReview() {
+
+      const name = document.getElementById("reviewName").value;
+      const email = document.getElementById("reviewEmail").value;
+      const rating = parseInt(document.getElementById("reviewRating").value);
+      const comment = document.getElementById("reviewComment").value;
+
+
+      if (!name || !email || !comment) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+
+      try {
+
+        const response = await fetch(`${API_URL}/api/reviews`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            rating,
+            comment
+          })
+        });
+
+
+        if (response.ok) {
+
+          alert("✅ Review submitted! Thank you for your feedback.");
+
+          document.getElementById("reviewName").value = "";
+          document.getElementById("reviewEmail").value = "";
+          document.getElementById("reviewComment").value = "";
+
+          loadReviews();
+
+        } else {
+
+          alert("❌ Failed to submit review. Please try again.");
+
+        }
+
+
+      } catch (error) {
+
+        console.error("❌ Review submission error:", error);
+        alert("Error submitting review");
+
+      }
+    }
+    // ============ SUBMIT RESERVATION ============
+    document.getElementById("reserveForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      console.log("✅ Reserve button clicked");
+
+      const name = document.getElementById("resName").value;
+      const email = document.getElementById("resEmail").value;
+      const phone = document.getElementById("resPhone").value;
+      const num_guests = parseInt(document.getElementById("resGuests").value);
+      const reservation_date = document.getElementById("resDate").value;
+      const reservation_time = document.getElementById("resTime").value;
+      const seating_preference = document.querySelector(".seat-opt.selected").dataset.seat;
+      const special_requests = document.getElementById("resSpecial").value;
+
+      // Show form values in Console
+      // Show all form values in browser console
+      console.log({
+        name,
+        email,
+        phone,
+        num_guests,
+        reservation_date,
+        reservation_time,
+        seating_preference,
+        special_requests
+      });
+
+
+      try {
+        const response = await fetch(`${API_URL}/api/reservations`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name, email, phone, num_guests, reservation_date, reservation_time,
+            seating_preference, special_requests
+          })
+        });
+
+        console.log("Response Status:", response.status);
+
+        if (response.ok) {
+          const result = await response.json();
+          document.getElementById("confirmBox").classList.add("show");
+          document.getElementById("confirmBox").scrollIntoView({ behavior: "smooth", block: "center" });
+          document.getElementById("reserveForm").reset();
+          document.querySelector(".seat-opt").classList.add("selected");
+        } else {
+          alert("❌ Failed to create reservation");
+        }
+      } catch (error) {
+        console.error("❌ Reservation error:", error);
+        alert("Error creating reservation");
+      }
+    });
+
+    // ============ SEATING TOGGLE ============
+    document.querySelectorAll(".seat-opt").forEach(opt => {
+      opt.addEventListener("click", () => {
+        document.querySelectorAll(".seat-opt").forEach(o => o.classList.remove("selected"));
+        opt.classList.add("selected");
+      });
+    });
+
+    // ============ INITIALIZE PAGE ============
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("🚀 Loading page data...");
+      loadMenu();
+      loadReviews();
+      loadEvents();
+    });
+
+
+    // ============ GALLERY SWIPER ============
+    document.querySelectorAll(".foodSwiper").forEach((swiperElement) => {
+
+      new Swiper(swiperElement, {
+        loop: true,
+
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+
+        speed: 1000,
+
+        slidesPerView: 1,
+
+        pagination: {
+          el: swiperElement.querySelector(".swiper-pagination"),
+          clickable: true,
+        },
+
+      });
+
+    });
+
+  </script>
+
+</body>
+
+</html>
